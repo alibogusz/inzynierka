@@ -23,13 +23,13 @@ for col in proc_data.columns:
 
 # OUTLIERS
 # train = proc_data[proc_data["TYPE"] == 'train']
-train = GetData().processed_train
+train = GetData().raw_train
 print(train)
 top_features = train.corr()[['PRICE']].sort_values(by=['PRICE'],ascending=False)
 
 
 plt.figure(figsize=(7,7))
-sns.heatmap(top_features,cmap='rainbow',annot=True,annot_kws={"size": 10},vmin=-0.5)
+sns.heatmap(top_features,cmap='rainbow',annot=True,annot_kws={"size": 10},vmin=-1)
 plt.show()
 
 

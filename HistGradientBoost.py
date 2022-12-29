@@ -212,7 +212,7 @@ def predict_final(X_train, y_train, X_test, n, d):
 
     # return score_
     solution = pd.DataFrame(y_pred[0], columns = ['PRICE'])
-    print(solution)
+    print(solution.describe())
     solution.to_excel('HistGradBoost_output.xlsx')
 
 if __name__ == "__main__":

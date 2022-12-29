@@ -6,9 +6,13 @@ from xgboost import XGBRegressor
 
 from data_proccessing import *
 
-X_train = GetData().X_train
-X_test = GetData().X_test
-y_train = GetData().y_train
+# X_train = GetData().X_train
+# X_test = GetData().X_test
+# y_train = GetData().y_train
+
+X_train = np.loadtxt('X_train.txt')
+X_test = np.loadtxt('X_test.txt')
+y_train = np.loadtxt('y_train.txt')
 
 
 def test_split(X_train, y_train):
@@ -151,14 +155,15 @@ def predict_final(X_train, y_train, X_test, n, d):
     print("Training score: ", score_)
 
     solution = pd.DataFrame(y_pred[0], columns = ['PRICE'])
-    print(solution)
+    print(solution.describe())
     solution.to_excel('XGB_output.xlsx')
 
 # # scores = cross_val_score(xgb, train_x, train_y, cv=100)
 # # print("Mean cross-validation score: {0} with deviation {1}".format(scores.mean(), scores.std()))
 
 if __name__ == "__main__":
-    # test_split(X_train, y_train)
-    test_n_estimators(X_train, y_train, X_test)
+    test_split(X_train, y_train)
+    # test_n_estimators(X_train, y_train, X_test)
     # test_max_depth(X_train, y_train, X_test)
     # predict_final(X_train, y_train, X_test, 1000, 7)
+    # print(X_train)
